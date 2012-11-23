@@ -1,0 +1,12 @@
+extends layout
+
+block container
+	div#svgcontainer
+	div#canvascontainer
+		canvas#canvas(style="pointer-events:none;")
+
+block append scripts
+	script(src="/js/spatial_query.js")
+	script(src="/js/underscore.min.js")
+	script(src="/js/box2d.min.js")
+	script(src="/svg.js")
