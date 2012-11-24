@@ -1,0 +1,24 @@
+extends layout
+
+block container
+	div.row
+		div#svgbeforecontainer.span6.svgpanel
+		div#svgaftercontainer.span6.svgpanel
+	div.row
+		pre#svgsrcbeforecontainer.span5.svgpanel.prettyprint(style="overflow:scroll")
+		pre#svgsrcaftercontainer.span5.svgpanel.prettyprint(style="overflow:scroll")
+	div.row
+		button.btn.btn-primary.btn-large.span10#submit Submit
+	form(method="POST",action="/svgstep2")
+		input(type="hidden",name="svgxml",id="svgxml")
+
+block append scripts
+	script(src="/js/prettify.js")
+	script(src="/js/vkbeautify.0.99.00.beta.js")
+	link(type="text/css",rel="stylesheet",href="css/prettify.css")
+	script(src="/js/paths.js")
+	script(src="/processsvg.js")
+	style
+		.svgpanel {
+			height: 400px;
+		}

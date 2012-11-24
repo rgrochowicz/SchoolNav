@@ -13,7 +13,8 @@
     "sylvester": ">= 0.0.21",
     "jsdom": ">= 0.2.18",
     "node-phantom": ">= 0.1.2",
-    "svgo": ">= 0.1.0"
+    "svgo": ">= 0.1.0",
+    "cheerio": ">= 0.10.3"
   },
   "engines": {
     "node": "0.8.x",
