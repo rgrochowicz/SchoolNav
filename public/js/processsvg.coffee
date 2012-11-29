@@ -10,7 +10,8 @@ $ ->
 
 		svgo.find("path").each(() ->
 			newd = applyTransforms(@, $(@).parents("svg")[0])
-			$(@).attr("d", newd)
+
+			$(@).attr("d", newd).removeAttr("transform")
 			if($(@).attr("fill") == "#e0e0e0")
 				$("#navgroup", svgo).append($(@).remove())
 
@@ -37,12 +38,12 @@ $ ->
 
 				@.setAttributeNS("null", "data-nodes", dn)
 			else
-				$("#pathgroup", svgo).append($(@).remove())
+				$("#pathgroup", svgo).append($(@).remove().attr("stroke-width","4"))
 		)
 
 		svgo.remove().appendTo("#svgaftercontainer")
 		$("#svgsrcaftercontainer").text(vkbeautify.xml($("#svgaftercontainer").html()))
-		prettyPrint()
+		#prettyPrint()
 
 		$("#submit").click () ->
 			$("#svgxml").val($("#svgaftercontainer").html())

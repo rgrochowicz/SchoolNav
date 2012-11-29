@@ -4,10 +4,10 @@ var cheerio = require("cheerio");
 
 exports.go = function(req, res) {
 	so = new SVGO();
-	so.fromFile("public/test.svg").then(function(min) {
+	so.fromFile("public/mao.svg").then(function(min) {
 		$ = cheerio.load(min.data);
 		var root = $("svg");
-		$("path[fill='none'],rect[fill='none']").remove();
+		$("rect[fill='none']").remove();
 		var pathgroup = $("<g></g>").attr({id:"pathgroup"});
 		var navgroup = $("<g></g>").attr({id:"navgroup"});
 		var textgroup = $("<g></g>").attr({id:"textgroup"});
