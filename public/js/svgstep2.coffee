@@ -30,7 +30,6 @@ GetNodes = (polygroup) ->
 	world.DestroyBody(world.GetBodyList())
 
 	addpoly = (id, points) ->
-		points = _.initial(points,2)
 		sums = _.reduce(points, (memo, num) ->
 			memo[0] += parseInt(num[0])
 			memo[1] += parseInt(num[1])
@@ -107,7 +106,7 @@ $ ->
 		applymatrix(x,y,ss[0].getCTM())
 
 	polyobj = {}
-	$("#navgroup path").each ->
+	$("#navgroup rect").each ->
 		dnodes = $(@).attr "data-nodes"
 		id = $(@).attr("id")
 		tmp = []
@@ -118,19 +117,20 @@ $ ->
 		polyobj[id] = tmp
 
 	nodeList = GetNodes(polyobj)
+	###
 	for node in nodeList
 		ma = ApplySVGMatrix(node.vert.x, node.vert.y)
 		ctx.beginPath()
 		ctx.arc(ma.x, ma.y, 7, 0, 2*Math.PI, false)
 		ctx.fillStyle = 'green'
-		ctx.fill()
+		ctx.fill()###
 
 	console.log nodeList
 
 
 	startnode = null
 	endnode = null
-	$("#navgroup path").click((e) ->
+	$("#navgroup rect").click((e) ->
 		tra = applymatrix(e.clientX, e.clientY, ss[0].getScreenCTM().inverse())
 		svgcoords = applymatrix(tra.x, tra.y, ss[0].getCTM())
 		ctx.beginPath()
